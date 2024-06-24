@@ -12,7 +12,6 @@ function App() {
 
     useEffect(() => {
         tg.ready();
-        console.log(tg);
     });
 
     return (
