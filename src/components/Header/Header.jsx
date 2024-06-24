@@ -1,16 +1,10 @@
 import Button from "../Button/Button";
+import { useTelegram } from "../hooks/useTelegram";
 import "./Header.modul.css";
-import { useEffect } from "react";
 
 function Header() {
-    useEffect(() => {
-        tg.ready();
-    });
-    const tg = window.Telegram.WebApp;
+    const { user, onClose } = useTelegram;
 
-    const onClose = () => {
-        tg.close();
-    };
     return (
         <div className="Header">
             <header>
@@ -30,9 +24,7 @@ function Header() {
                     <li>21</li>
                 </ul>
                 <Button onClick={onClose}>Закрыть</Button>
-                <span className={"username"}>
-                    {tg.initDataUnsafe?.user?.username}
-                </span>
+                <span className={"username"}>{user?.username}</span>
             </header>
         </div>
     );
