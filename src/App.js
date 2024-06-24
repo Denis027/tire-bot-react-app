@@ -1,4 +1,5 @@
 import "./App.css";
+import Button from "./components/Button/Button";
 import Header from "./components/Header/Header";
 import { useEffect } from "react";
 // import { useTelegram } from "./components/hooks/useTelegram";
@@ -23,7 +24,7 @@ function App() {
         <div className="App">
             {/* <h1>work</h1> */}
             <Header />
-            <button onClick={onToggleButton}>toggle</button>
+            <Button onClick={onToggleButton}>toggle</Button>
         </div>
     );
 }
