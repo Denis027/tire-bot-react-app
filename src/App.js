@@ -3,17 +3,11 @@ import Button from "./components/Button/Button";
 import Header from "./components/Header/Header";
 import { useEffect } from "react";
 import { useTelegram } from "./components/hooks/useTelegram";
+import { Route, Routes } from "react-router-dom";
+import ProductList from "./components/ProductList/ProductList";
+import Form from "./components/Form/Form";
 
 function App() {
-    // const tg = window.Telegram.WebApp;
-    // const onToggleButton = () => {
-    //     if (tg.MainBotton.isVisible) {
-    //         tg.MainBotton.hide();
-    //     } else {
-    //         tg.MainBotton.show();
-    //     }
-    // };
-
     const { tg, onToggleButton } = useTelegram();
 
     useEffect(() => {
@@ -24,6 +18,10 @@ function App() {
         <div className="App">
             {/* <h1>work</h1> */}
             <Header />
+            <Routes>
+                <Route index element={<ProductList />} />
+                <Route path="form" element={<Form />} />
+            </Routes>
             <Button onClick={onToggleButton}>toggle</Button>
         </div>
     );

@@ -1,31 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.seasonList{
-display: flex;
-font-size: 25px;
-font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.r{
+.productList {
     display: flex;
     font-size: 25px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    }
-
-.seasonList li{
-    display: flex;
-        margin: 5px;
-        font-size: 25px;
-        font-family: Georgia, 'Times New Roman', Times, serif;    
-    }
-
-.r li{
-    display: flex;
-        margin: 5px;
-        font-size: 25px;
-        font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, "Times New Roman", Times, serif;
 }

@@ -3,12 +3,6 @@ import { useTelegram } from "../hooks/useTelegram";
 import "./Header.modul.css";
 
 function Header() {
-    // const tg = window.Telegram.WebApp;
-    // const user = tg.initDataUnsafe?.user;
-    // const onClose = () => {
-    //     tg.close();
-    // };
-
     const { user, onClose } = useTelegram();
 
     return (
@@ -30,7 +24,7 @@ function Header() {
                     <li>21</li>
                 </ul>
                 <Button onClick={onClose}>Закрыть</Button>
-                <span className={"username"}>{user?.username}</span>
+                <span className="username">{user?.username}</span>
             </header>
         </div>
     );
