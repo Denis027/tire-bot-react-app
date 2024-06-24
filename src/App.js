@@ -12,11 +12,12 @@ function App() {
 
     useEffect(() => {
         tg.ready();
+        console.log(tg);
     });
 
     return (
         <div className="App">
-            {/* <h1>work</h1> */}
+            <h1>work</h1>
             <Header />
             <Routes>
                 <Route index element={<ProductList />} />

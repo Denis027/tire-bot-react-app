@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Form.modul.css";
+// import { useTelegram } from "../hooks/useTelegram";
 
 const Form = (props) => {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [subject, setSubject] = useState("physical");
+
+    // const {tg} = useTelegram();
+    useEffect(() => {});
 
     const onChangeName = (e) => {
         setName(e.target.value);
