@@ -7,6 +7,7 @@ function Header() {
 
     return (
         <div className="Header">
+            <span className="username">{user?.username}</span>
             <header>
                 <ul className="seasonList">
                     <li>Лето</li>
@@ -24,7 +25,7 @@ function Header() {
                     <li>21</li>
                 </ul>
                 <Button onClick={onClose}>Закрыть</Button>
-                <span className="username">{user?.username}</span>
+                
             </header>
         </div>
     );
