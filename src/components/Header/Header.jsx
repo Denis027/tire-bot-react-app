@@ -30,6 +30,9 @@ function Header() {
                     <li>21</li>
                 </ul>
                 <Button onClick={onClose}>Закрыть</Button>
+                <span className={"username"}>
+                    {tg.initDataUnsafe?.user?.username}
+                </span>
             </header>
         </div>
     );
