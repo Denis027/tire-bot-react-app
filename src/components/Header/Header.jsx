@@ -1,7 +1,16 @@
 import Button from "../Button/Button";
 import "./Header.modul.css";
+import { useEffect } from "react";
 
 function Header() {
+    useEffect(() => {
+        tg.ready();
+    });
+    const tg = window.Telegram.WebApp;
+
+    const onClose = () => {
+        tg.close();
+    };
     return (
         <div className="Header">
             <header>
@@ -20,7 +29,7 @@ function Header() {
                     <li>20</li>
                     <li>21</li>
                 </ul>
-                <Button>Закрыть</Button>
+                <Button onClick={onClose}>Закрыть</Button>
             </header>
         </div>
     );
