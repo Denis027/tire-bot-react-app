@@ -2,13 +2,23 @@ import "./App.css";
 import Button from "./components/Button/Button";
 import Header from "./components/Header/Header";
 import { useEffect } from "react";
-import { useTelegram } from "./components/hooks/useTelegram";
+// import { useTelegram } from "./components/hooks/useTelegram";
 import { Route, Routes } from "react-router-dom";
 import ProductList from "./components/ProductList/ProductList";
 import Form from "./components/Form/Form";
 
+const tg = window.Telegram.WebApp;
+
 function App() {
-    const { tg, onToggleButton } = useTelegram();
+    // const { tg, onToggleButton } = useTelegram();
+
+    const onToggleButton = () => {
+        if (tg.MainBotton.isVisible) {
+            tg.MainBotton.hide();
+        } else {
+            tg.MainBotton.show();
+        }
+    };
 
     useEffect(() => {
         tg.ready();
