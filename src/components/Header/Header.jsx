@@ -1,15 +1,15 @@
 import Button from "../Button/Button";
-// import { useTelegram } from "../hooks/useTelegram";
+import { useTelegram } from "../hooks/useTelegram";
 import "./Header.modul.css";
 
 function Header() {
-    const tg = window.Telegram.WebApp;
-    const user = tg.initDataUnsafe?.user;
-    const onClose = () => {
-        tg.close();
-    };
+    // const tg = window.Telegram.WebApp;
+    // const user = tg.initDataUnsafe?.user;
+    // const onClose = () => {
+    //     tg.close();
+    // };
 
-    // const { user, onClose } = useTelegram();
+    const { user, onClose } = useTelegram();
 
     return (
         <div className="Header">
