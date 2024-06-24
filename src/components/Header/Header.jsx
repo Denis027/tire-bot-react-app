@@ -3,7 +3,7 @@ import { useTelegram } from "../hooks/useTelegram";
 import "./Header.modul.css";
 
 function Header() {
-    const { user, onClose } = useTelegram;
+    const { user, onClose } = useTelegram();
 
     return (
         <div className="Header">
@@ -23,7 +23,7 @@ function Header() {
                     <li>20</li>
                     <li>21</li>
                 </ul>
-                <Button onClick={onClose}>Закрыть</Button>
+                <Button onClick={onClose()}>Закрыть</Button>
                 <span className={"username"}>{user?.username}</span>
             </header>
         </div>
