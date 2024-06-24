@@ -7,21 +7,19 @@ import { Route, Routes } from "react-router-dom";
 import ProductList from "./components/ProductList/ProductList";
 import Form from "./components/Form/Form";
 
-const tg = window.Telegram.WebApp;
-
 function App() {
     // const { tg, onToggleButton } = useTelegram();
 
     const onToggleButton = () => {
-        if (tg.MainBotton.isVisible) {
-            tg.MainBotton.hide();
+        if (window.Telegram.WebApp.MainBotton.isVisible) {
+            window.Telegram.WebApp.MainBotton.hide();
         } else {
-            tg.MainBotton.show();
+            window.Telegram.WebApp.MainBotton.show();
         }
     };
 
     useEffect(() => {
-        tg.ready();
+        window.Telegram.WebApp.ready();
     });
 
     return (
