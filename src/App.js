@@ -7,7 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import ProductList from "./components/ProductList/ProductList";
 import Form from "./components/Form/Form";
 
-function App() {
+const App = () => {
     const { tg, onToggleButton } = useTelegram();
 
     useEffect(() => {
@@ -19,12 +19,12 @@ function App() {
             <h1>work</h1>
             <Header />
             <Routes>
-                <Route index element={<ProductList />} />
+                <Route index path={"/*"} element={<ProductList />} />
                 <Route path={"form"} element={<Form />} />
             </Routes>
             <Button onClick={onToggleButton}>toggle</Button>
         </div>
     );
-}
+};
 
 export default App;
