@@ -1,5 +1,23 @@
-.productList {
+.product {
     display: flex;
-    font-size: 25px;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    flex-direction: column;
+    border: 1px solid var(--tg-them-button-color);
+    padding: 15px;
+    width: 170px;
+}
+
+.img {
+    width: 100%;
+    background: lightgray;
+    height: 100px;
+    margin: 0 auto;
+    background: var(--tg-them-button-color);
+}
+
+.discription {
+    font-size: 0.8em;
+}
+
+.add-btn {
+    width: 100%;
 }

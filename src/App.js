@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import ProductList from "./components/ProductList/ProductList";
 import Form from "./components/Form/Form";
 
-const App = () => {
+const App = (props) => {
     const { tg } = useTelegram();
 
     useEffect(() => {
@@ -16,7 +16,11 @@ const App = () => {
         <div className="App">
             {/* <h1>work</h1> */}
             <Routes>
-                <Route index path={"/*"} element={<ProductList />} />
+                <Route
+                    index
+                    path={"/*"}
+                    element={<ProductList tires={props.tires} />}
+                />
                 <Route path={"form"} element={<Form />} />
             </Routes>
         </div>
