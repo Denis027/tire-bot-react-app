@@ -4,9 +4,9 @@ import "./ProductList.modul.css";
 function ProductList() {
     return (
         <div className="productList">
-            <div>
+            {/* <div>
                 <Header />
-            </div>
+            </div> */}
             <div>ProductList</div>
         </div>
     );

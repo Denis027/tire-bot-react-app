@@ -7,7 +7,7 @@ import ProductList from "./components/ProductList/ProductList";
 import Form from "./components/Form/Form";
 
 const App = () => {
-    const { tg, onToggleButton } = useTelegram();
+    const { tg } = useTelegram();
 
     useEffect(() => {
         tg.ready();
@@ -16,11 +16,24 @@ const App = () => {
     return (
         <div className="App">
             <h1>work</h1>
+            <Button
+                onClick={() => {
+                    window.Telegram.WebApp.MainBotton.show();
+                }}
+            >
+                Показать
+            </Button>
+            <Button
+                onClick={() => {
+                    window.Telegram.WebApp.MainBotton.hide();
+                }}
+            >
+                Скрыть
+            </Button>
             <Routes>
                 <Route index path={"/*"} element={<ProductList />} />
                 <Route path={"form"} element={<Form />} />
             </Routes>
-            <Button onClick={onToggleButton}>toggle</Button>
         </div>
     );
 };
