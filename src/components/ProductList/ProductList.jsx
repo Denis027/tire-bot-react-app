@@ -1,4 +1,4 @@
-import Header from "../Header/Header";
+// import Header from "../Header/Header";
 import "./ProductList.modul.css";
 
 function ProductList() {
