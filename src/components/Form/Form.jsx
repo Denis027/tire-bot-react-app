@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./Form.modul.css";
 import { useTelegram } from "../hooks/useTelegram";
+import Button from "../Button/Button";
 
 const Form = (props) => {
     const [name, setName] = useState("");
@@ -21,6 +22,22 @@ const Form = (props) => {
             tg.MainButton.show();
         }
     }, [name, phone, tg.MainButton]);
+
+    const onSendData = useCallback(() => {
+        const data = {
+            name,
+            phone,
+            subject,
+        };
+        tg.onSendData(JSON.stringify(data));
+    }, [name, phone, subject, tg]);
+
+    useEffect(() => {
+        tg.onEvent("mainButtonClicked", onSendData);
+        return () => {
+            tg.offEvent("mainButtonClicked", onSendData);
+        };
+    }, [tg, onSendData]);
 
     const onChangeName = (e) => {
         setName(e.target.value);
@@ -59,6 +76,9 @@ const Form = (props) => {
                 <option value={"physical"}>Физ. лицо</option>
                 <option value={"legal"}>Юр. лицо</option>
             </select>
+            <Button onClick={tg.onEvent("mainButtonClicked", onSendData)}>
+                Отправить
+            </Button>
         </div>
     );
 };
