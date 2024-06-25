@@ -36,7 +36,7 @@ const Form = (props) => {
 
     return (
         <div>
-            <h3>Введите ваши данные</h3>
+            <h2>Введите ваши данные и мы вам перезвоним!</h2>
             <input
                 className={"input"}
                 type="text"
