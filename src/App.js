@@ -1,6 +1,5 @@
 import "./App.css";
 import Button from "./components/Button/Button";
-import Header from "./components/Header/Header";
 import { useEffect } from "react";
 import { useTelegram } from "./components/hooks/useTelegram";
 import { Route, Routes } from "react-router-dom";
@@ -17,7 +16,6 @@ const App = () => {
     return (
         <div className="App">
             <h1>work</h1>
-            <Header />
             <Routes>
                 <Route index path={"/*"} element={<ProductList />} />
                 <Route path={"form"} element={<Form />} />
