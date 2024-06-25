@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./Form.modul.css";
 import { useTelegram } from "../hooks/useTelegram";
-import Button from "../Button/Button";
 
 const Form = (props) => {
     const [name, setName] = useState("");
@@ -29,7 +28,7 @@ const Form = (props) => {
             phone,
             subject,
         };
-        tg.onSendData(JSON.stringify(data));
+        tg.sendData(JSON.stringify(data));
     }, [name, phone, subject, tg]);
 
     useEffect(() => {
@@ -63,7 +62,7 @@ const Form = (props) => {
             />
             <input
                 className={"input"}
-                type="number"
+                type="text"
                 placeholder={"Номер телефона"}
                 value={phone}
                 onChange={onChangePhone}
@@ -76,9 +75,6 @@ const Form = (props) => {
                 <option value={"physical"}>Физ. лицо</option>
                 <option value={"legal"}>Юр. лицо</option>
             </select>
-            <Button onClick={tg.onEvent("mainButtonClicked", onSendData)}>
-                Отправить
-            </Button>
         </div>
     );
 };
