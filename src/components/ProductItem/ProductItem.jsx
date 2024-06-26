@@ -1,4 +1,3 @@
-// import Header from "../Header/Header";
 import "./ProductItem.modul.css";
 import Button from "../Button/Button";
 
@@ -9,18 +8,16 @@ function ProductItem(props) {
 
     return (
         <div className="productItem">
-            <div className="img">
-                <img alt="tire" src={props.product.mainPhoto}></img>
-            </div>
-            <div className="title"></div>
-            <div className="discription"></div>
+            <img className="img" alt="tire" src={props.mainPhoto}></img>
+            <h3 className="title">{props.title}</h3>
+            <div className="size">{props.size}</div>
+            <div className="season">{props.season}</div>
+            <div className="discription">{props.discription}</div>
             <div className="price">
                 <span>
-                    Стоимость: <b>{props.product.price} руб.</b>
+                    Стоимость: <b>{props.price} руб.</b>
                 </span>
-                <Button className="add-btn" onClick={onAddHandler}>
-                    Добавить в корзину
-                </Button>
+                <Button onClick={onAddHandler} className="add-btn">Добавить в корзину</Button>
             </div>
         </div>
     );

@@ -14,13 +14,9 @@ const App = (props) => {
 
     return (
         <div className="App">
-            {/* <h1>work</h1> */}
+            <h1>work</h1>
             <Routes>
-                <Route
-                    index
-                    path={"/*"}
-                    element={<ProductList tires={props.tires} />}
-                />
+                <Route index path={"/*"} element={<ProductList />} />
                 <Route path={"form"} element={<Form />} />
             </Routes>
         </div>

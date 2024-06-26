@@ -3,7 +3,7 @@ import { useState } from "react";
 import ProductItem from "../ProductItem/ProductItem";
 import "./ProductList.modul.css";
 
-let tires = [
+const tires = [
     {
         id: 1,
         title: "TOYO",
@@ -12,6 +12,7 @@ let tires = [
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+        discription: "Lorem ipsum",
     },
     {
         id: 2,
@@ -21,6 +22,7 @@ let tires = [
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+        discription: "Lorem ipsum",
     },
     {
         id: 3,
@@ -30,6 +32,7 @@ let tires = [
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+        discription: "Lorem ipsum",
     },
     {
         id: 4,
@@ -39,6 +42,7 @@ let tires = [
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+        discription: "Lorem ipsum",
     },
     {
         id: 5,
@@ -48,17 +52,23 @@ let tires = [
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+        discription: "Lorem ipsum",
     },
 ];
 
 function ProductList(props) {
     const [addedItems, setAddedItems] = useState([]);
-    
-    // eslint-disable-next-line
-    const tireItem = tires.map((item) => {
-        <ProductItem className={"item"} product={item} onAdd={onAdd} />;
-    });
 
+    const TireItem = tires.map((t) => (
+        <ProductItem
+            mainPhoto={t.mainPhoto}
+            title={t.title}
+            discription={t.discription}
+            price={t.price}
+        />
+    ));
+
+    // eslint-disable-next-line
     const onAdd = (product) => {
         const alreadyAdded = addedItems.find((item) => item.id === product.id);
         let newItems = [];
@@ -72,7 +82,7 @@ function ProductList(props) {
         setAddedItems(newItems);
     };
 
-    return <div className="productList">{tireItem}</div>;
+    return <div className="productList">{TireItem}</div>;
 }
 
 export default ProductList;
