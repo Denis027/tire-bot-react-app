@@ -1,5 +1,5 @@
 .product {
-    background-color: yellowgreen;
+    background-color: var(--tg-theme-bg-color);
     display: grid;
     grid-template-columns: 1fr;
     border: 1px solid var(--tg-them-button-color);

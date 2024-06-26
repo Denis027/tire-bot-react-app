@@ -15,7 +15,7 @@ function ProductItem(props) {
             <div className="discription">{props.discription}</div>
             <div className="price">
                 <span>
-                    Стоимость: <b>{props.price} руб.</b>
+                    Цена: <b>{props.price} руб.</b>
                 </span>
                 <Button onClick={onAddHandler} className="add-btn">
                     Добавить в корзину
