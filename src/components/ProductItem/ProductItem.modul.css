@@ -1,4 +1,5 @@
 .product {
+    background-color: yellowgreen;
     display: flex;
     flex-direction: column;
     border: 1px solid var(--tg-them-button-color);
@@ -13,6 +14,7 @@
     height: 100px;
     margin: 0 auto;
     background: var(--tg-them-button-color);
+    border-radius: 10px;
 }
 
 .discription {
@@ -21,4 +23,5 @@
 
 .add-btn {
     width: 100%;
+    border-radius: 10px;
 }

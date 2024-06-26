@@ -1,10 +1,10 @@
-.list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.productList {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
 }
 
 .item {
-    margin-right: 10px;
-    margin-bottom: 10px;
+    display: grid;
+    align-self: start;
 }
