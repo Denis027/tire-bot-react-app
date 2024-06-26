@@ -63,6 +63,8 @@ function ProductList(props) {
         <ProductItem
             mainPhoto={t.mainPhoto}
             title={t.title}
+            size={t.size}
+            season={t.season}
             discription={t.discription}
             price={t.price}
         />
