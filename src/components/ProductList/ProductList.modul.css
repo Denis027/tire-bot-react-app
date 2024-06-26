@@ -11,3 +11,7 @@
 .item {
     display: subgrid;
 }
+
+.select {
+    margin-right: 10px;
+}

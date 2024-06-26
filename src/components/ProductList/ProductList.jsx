@@ -8,7 +8,9 @@ const tires = [
         id: 1,
         title: "TOYO",
         season: "зима",
-        size: "r15",
+        with: "175",
+        hight: "65",
+        diameter: "15",
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
@@ -19,7 +21,9 @@ const tires = [
         id: 2,
         title: "TOYO",
         season: "зима",
-        size: "r15",
+        with: "185",
+        hight: "65",
+        diameter: "16",
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
@@ -30,7 +34,9 @@ const tires = [
         id: 3,
         title: "TOYO",
         season: "зима",
-        size: "r15",
+        with: "195",
+        hight: "45",
+        diameter: "17",
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
@@ -40,8 +46,10 @@ const tires = [
     {
         id: 4,
         title: "TOYO",
-        season: "зима",
-        size: "r15",
+        season: "лето",
+        with: "195",
+        hight: "35",
+        diameter: "18",
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
@@ -51,8 +59,10 @@ const tires = [
     {
         id: 5,
         title: "TOYO",
-        season: "зима",
-        size: "r15",
+        season: "лето",
+        with: "185",
+        hight: "45",
+        diameter: "19",
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
@@ -64,11 +74,34 @@ const tires = [
 function ProductList(props) {
     const [addedItems, setAddedItems] = useState([]);
 
+    const [season, setSeason] = useState("");
+    const [width, setWith] = useState("");
+    const [hight, setHight] = useState("");
+    const [diameter, setDiameter] = useState("");
+
+    const onChangeSeason = (e) => {
+        setSeason(e.target.value);
+    };
+
+    const onChangeWidth = (e) => {
+        setWith(e.target.value);
+    };
+
+    const onChangeHight = (e) => {
+        setHight(e.target.value);
+    };
+
+    const onChangeDiameter = (e) => {
+        setDiameter(e.target.value);
+    };
+
     const TireItem = tires.map((t) => (
         <ProductItem
             mainPhoto={t.mainPhoto}
             title={t.title}
-            size={t.size}
+            width={t.with}
+            hight={t.hight}
+            diameter={t.diameter}
             season={t.season}
             discription={t.discription}
             price={t.price}
@@ -90,7 +123,62 @@ function ProductList(props) {
         setAddedItems(newItems);
     };
 
-    return <div className="productList">{TireItem}</div>;
+    return (
+        <div>
+            <div className="filter">
+                <select
+                    value={season}
+                    onChange={onChangeSeason}
+                    className={"select"}
+                >
+                    <option value={""}>Сезон</option>
+                    <option value={"winter"}>Зима</option>
+                    <option value={"summer"}>Лето</option>
+                </select>
+                <select
+                    value={width}
+                    onChange={onChangeWidth}
+                    className={"select"}
+                >
+                    <option value={""}>Ширина</option>
+                    <option value={"175"}>175</option>
+                    <option value={"180"}>180</option>
+                    <option value={"185"}>185</option>
+                    <option value={"195"}>195</option>
+                    <option value={"200"}>200</option>
+                    <option value={"205"}>205</option>
+                </select>
+                <select
+                    value={hight}
+                    onChange={onChangeHight}
+                    className={"select"}
+                >
+                    <option value={""}>Высота</option>
+                    <option value={"35"}>35</option>
+                    <option value={"40"}>40</option>
+                    <option value={"45"}>45</option>
+                    <option value={"50"}>50</option>
+                    <option value={"55"}>55</option>
+                    <option value={"60"}>60</option>
+                    <option value={"65"}>65</option>
+                </select>
+                <select
+                    value={diameter}
+                    onChange={onChangeDiameter}
+                    className={"select"}
+                >
+                    <option value={""}>Диаметр</option>
+                    <option value={"15"}>15</option>
+                    <option value={"16"}>16</option>
+                    <option value={"17"}>17</option>
+                    <option value={"18"}>18</option>
+                    <option value={"19"}>19</option>
+                    <option value={"20"}>20</option>
+                </select>
+            </div>
+            <div className="productList">{TireItem}</div>
+        </div>
+    );
 }
 
 export default ProductList;
