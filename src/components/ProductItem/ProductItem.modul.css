@@ -1,5 +1,5 @@
 .product {
-    background-color: lightblue;
+    background-color: var(--tg-theme-secondary-bg-color);
     display: grid;
     grid-template-columns: 1fr;
     border: 1px solid var(--tg-them-button-color);
@@ -14,16 +14,22 @@
     border-radius: 10px;
 }
 
+.season {
+    /* color: greenyellow; */
+}
 .size {
+    /* color: greenyellow; */
     margin-bottom: 10px;
 }
 
 .discription {
+    /* color: greenyellow; */
     /* font-size: 0.8em; */
     margin-bottom: 10px;
 }
 
 .price {
+    /* color: greenyellow; */
     margin-bottom: 10px;
 }
 
