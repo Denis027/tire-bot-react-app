@@ -12,7 +12,8 @@ const tires = [
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-        discription: "Lorem ipsum",
+        discription:
+            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
     },
     {
         id: 2,
@@ -22,7 +23,8 @@ const tires = [
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-        discription: "Lorem ipsum",
+        discription:
+            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
     },
     {
         id: 3,
@@ -32,7 +34,8 @@ const tires = [
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-        discription: "Lorem ipsum",
+        discription:
+            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
     },
     {
         id: 4,
@@ -42,7 +45,8 @@ const tires = [
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-        discription: "Lorem ipsum",
+        discription:
+            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
     },
     {
         id: 5,
@@ -52,7 +56,8 @@ const tires = [
         price: "5000",
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-        discription: "Lorem ipsum",
+        discription:
+            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
     },
 ];
 
@@ -67,6 +72,7 @@ function ProductList(props) {
             season={t.season}
             discription={t.discription}
             price={t.price}
+            key={t.id}
         />
     ));
 
