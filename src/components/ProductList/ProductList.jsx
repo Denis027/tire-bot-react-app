@@ -124,7 +124,7 @@ function ProductList(props) {
     };
 
     return (
-        <div>
+        <div className="productListWrapper">
             <div className="filter">
                 <select
                     value={season}

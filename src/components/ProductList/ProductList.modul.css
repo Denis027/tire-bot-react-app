@@ -1,19 +1,25 @@
-.productList {
-    display: grid;
-    justify-content: space-evenly;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-    justify-items: stretch;
-    gap: 10px;
+.productListWrapper{
     padding: 20px;
 }
 
-.item {
-    display: subgrid;
+.filter {
 }
 
 .select {
     background-color: var(--tg-theme-secondary-bg-color);
     color: var(--tg-theme-text-color);
     margin-right: 10px;
+}
+
+.productList {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    justify-items: stretch;
+    gap: 20px;
+}
+
+.item {
+    display: subgrid;
 }
