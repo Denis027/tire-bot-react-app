@@ -7,8 +7,8 @@ const tires = [
     {
         id: 1,
         title: "TOYO",
-        season: "зима",
-        with: "175",
+        season: "winter",
+        width: "175",
         hight: "65",
         diameter: "15",
         price: "5000",
@@ -20,8 +20,8 @@ const tires = [
     {
         id: 2,
         title: "TOYO",
-        season: "зима",
-        with: "185",
+        season: "winter",
+        width: "185",
         hight: "65",
         diameter: "16",
         price: "5000",
@@ -33,8 +33,8 @@ const tires = [
     {
         id: 3,
         title: "TOYO",
-        season: "зима",
-        with: "195",
+        season: "winter",
+        width: "195",
         hight: "45",
         diameter: "17",
         price: "5000",
@@ -46,8 +46,8 @@ const tires = [
     {
         id: 4,
         title: "TOYO",
-        season: "лето",
-        with: "195",
+        season: "summer",
+        width: "195",
         hight: "35",
         diameter: "18",
         price: "5000",
@@ -59,8 +59,8 @@ const tires = [
     {
         id: 5,
         title: "TOYO",
-        season: "лето",
-        with: "185",
+        season: "summer",
+        width: "185",
         hight: "45",
         diameter: "19",
         price: "5000",
@@ -81,25 +81,59 @@ function ProductList(props) {
 
     const onChangeSeason = (e) => {
         setSeason(e.target.value);
+        console.log(e.target.value);
     };
 
     const onChangeWidth = (e) => {
         setWith(e.target.value);
+        console.log(e.target.value);
     };
 
     const onChangeHight = (e) => {
         setHight(e.target.value);
+        console.log(e.target.value);
     };
 
     const onChangeDiameter = (e) => {
         setDiameter(e.target.value);
+        console.log(e.target.value);
     };
 
-    const TireItem = tires.map((t) => (
+    const filtredMass = tires
+        .filter(function (item) {
+            if (season === "") {
+                return true;
+            } else {
+                return item.season === season;
+            }
+        })
+        .filter(function (item) {
+            if (width === "") {
+                return true;
+            } else {
+                return item.width === width;
+            }
+        })
+        .filter(function (item) {
+            if (hight === "") {
+                return true;
+            } else {
+                return item.hight === hight;
+            }
+        })
+        .filter(function (item) {
+            if (diameter === "") {
+                return true;
+            } else {
+                return item.diameter === diameter;
+            }
+        });
+
+    const TireItem = filtredMass.map((t) => (
         <ProductItem
             mainPhoto={t.mainPhoto}
             title={t.title}
-            width={t.with}
+            width={t.width}
             hight={t.hight}
             diameter={t.diameter}
             season={t.season}

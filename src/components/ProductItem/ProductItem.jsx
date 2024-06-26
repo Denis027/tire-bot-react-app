@@ -10,8 +10,11 @@ function ProductItem(props) {
         <div className="product">
             <img className="img" alt="tire" src={props.mainPhoto}></img>
             <h3 className="title">{props.title}</h3>
+            <div>{props.key}</div>
             <div className="season">Сезон: {props.season}</div>
-            <div className="size">Размер: {props.width}/{props.hight}/r{props.diameter}</div>
+            <div className="size">
+                Размер: {props.width}/{props.hight}/r{props.diameter}
+            </div>
             <div className="discription">Описание: {props.discription}</div>
             <div className="price">
                 <span>
