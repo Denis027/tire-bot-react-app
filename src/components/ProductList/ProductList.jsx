@@ -12,7 +12,7 @@ const tires = [
         width: "175",
         hight: "65",
         diameter: "15",
-        price: "5000",
+        price: 5000,
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
         discription:
@@ -25,7 +25,7 @@ const tires = [
         width: "185",
         hight: "65",
         diameter: "16",
-        price: "5000",
+        price: 5000,
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
         discription:
@@ -38,7 +38,7 @@ const tires = [
         width: "195",
         hight: "45",
         diameter: "17",
-        price: "5000",
+        price: 5000,
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
         discription:
@@ -51,7 +51,7 @@ const tires = [
         width: "195",
         hight: "35",
         diameter: "18",
-        price: "5000",
+        price: 5000,
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
         discription:
@@ -64,7 +64,7 @@ const tires = [
         width: "185",
         hight: "45",
         diameter: "19",
-        price: "5000",
+        price: 5000,
         mainPhoto:
             "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
         discription:
