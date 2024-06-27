@@ -8,17 +8,16 @@ function ProductItem(props) {
 
     return (
         <div className="product">
-            <img className="img" alt="tire" src={props.mainPhoto}></img>
-            <h3 className="title">{props.title}</h3>
-            <div>{props.key}</div>
-            <div className="season">Сезон: {props.season}</div>
+            <img className="img" alt="tire" src={props.item.mainPhoto}></img>
+            <h3 className="title">{props.item.title} id:{props.item.id}</h3>
+            <div className="season">Сезон: {props.item.season}</div>
             <div className="size">
-                Размер: {props.width}/{props.hight}/r{props.diameter}
+                Размер: {props.item.width}/{props.item.hight}/r{props.item.diameter}
             </div>
-            <div className="discription">Описание: {props.discription}</div>
+            <div className="discription">Описание: {props.item.discription}</div>
             <div className="price">
                 <span>
-                    Цена: <b>{props.price} руб.</b>
+                    Цена: <b>{props.item.price} руб.</b>
                 </span>
             </div>
             <Button onClick={onAddHandler} className="add-btn">

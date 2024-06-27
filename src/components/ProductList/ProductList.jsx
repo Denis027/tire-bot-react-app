@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ProductItem from "../ProductItem/ProductItem";
 import "./ProductList.modul.css";
+import { useTelegram } from "../hooks/useTelegram";
 
 const tires = [
     {
@@ -72,6 +73,7 @@ const tires = [
 ];
 
 function ProductList(props) {
+    const { tg } = useTelegram();
     const [addedItems, setAddedItems] = useState([]);
 
     const [season, setSeason] = useState("");
@@ -81,25 +83,49 @@ function ProductList(props) {
 
     const onChangeSeason = (e) => {
         setSeason(e.target.value);
-        console.log(e.target.value);
     };
 
     const onChangeWidth = (e) => {
         setWith(e.target.value);
-        console.log(e.target.value);
     };
 
     const onChangeHight = (e) => {
         setHight(e.target.value);
-        console.log(e.target.value);
     };
 
     const onChangeDiameter = (e) => {
         setDiameter(e.target.value);
-        console.log(e.target.value);
     };
 
-    const filtredMass = tires
+    const getTotalPrice = (items = []) => {
+        return items.reduce((acc, item) => {
+            return (acc += item.price);
+        }, 0);
+    };
+
+    const onAdd = (product) => {
+        const alreadyAdded = addedItems.find((item) => item.id === product.id);
+        let newItems = [];
+
+        if (alreadyAdded) {
+            newItems = addedItems.filter((item) => item.id !== product.id);
+        } else {
+            newItems = [...addedItems, product];
+        }
+
+        setAddedItems(newItems);
+
+        if (newItems.length === 0) {
+            tg.MainButton.hide();
+        } else {
+            tg.MainButton.show();
+            tg.MainButton.setParams({
+                text: `Купить ${getTotalPrice(newItems)} руб.`,
+            });
+        }
+    };
+
+    const TireItems = tires
         .filter(function (item) {
             if (season === "") {
                 return true;
@@ -127,35 +153,8 @@ function ProductList(props) {
             } else {
                 return item.diameter === diameter;
             }
-        });
-
-    const TireItem = filtredMass.map((t) => (
-        <ProductItem
-            mainPhoto={t.mainPhoto}
-            title={t.title}
-            width={t.width}
-            hight={t.hight}
-            diameter={t.diameter}
-            season={t.season}
-            discription={t.discription}
-            price={t.price}
-            key={t.id}
-        />
-    ));
-
-    // eslint-disable-next-line
-    const onAdd = (product) => {
-        const alreadyAdded = addedItems.find((item) => item.id === product.id);
-        let newItems = [];
-
-        if (alreadyAdded) {
-            newItems = addedItems.filter((item) => item.id !== product.id);
-        } else {
-            newItems = [...addedItems, product];
-        }
-
-        setAddedItems(newItems);
-    };
+        })
+        .map((item) => <ProductItem item={item} onAdd={onAdd} />);
 
     return (
         <div className="productListWrapper">
@@ -210,7 +209,7 @@ function ProductList(props) {
                     <option value={"20"}>20</option>
                 </select>
             </div>
-            <div className="productList">{TireItem}</div>
+            <div className="productList">{TireItems}</div>
         </div>
     );
 }

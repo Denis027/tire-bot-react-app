@@ -20,7 +20,8 @@
     justify-content: space-evenly;
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
-    justify-items: stretch;
+    /* justify-items: stretch; */
+    justify-items: center;
     gap: 10px;
 }
 

@@ -1,8 +1,9 @@
 .product {
     background-color: var(--tg-theme-secondary-bg-color);
     display: grid;
+    justify-items: center;
     grid-template-columns: 1fr;
-    border: 1px solid var(--tg-them-button-color);
+    border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
     /* width: 170px; */
@@ -14,9 +15,9 @@
     border-radius: 10px;
     margin-bottom: 10px;
 }
-
+/* 
 .season {
-}
+} */
 .size {
     margin-bottom: 10px;
 }
