@@ -1,92 +1,39 @@
-// import Header from "../Header/Header";
 import { useState } from "react";
 import ProductItem from "../ProductItem/ProductItem";
 import "./ProductList.modul.css";
 import { useTelegram } from "../hooks/useTelegram";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    seasonFilter,
+    widthFilter,
+    // hightFilter,
+    // diameterFilter,
+} from "../../app/slices/tireListSlice";
 
-const tires = [
-    {
-        id: 1,
-        title: "TOYO",
-        season: "winter",
-        width: "175",
-        hight: "65",
-        diameter: "15",
-        price: 5000,
-        mainPhoto:
-            "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-        discription:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-    },
-    {
-        id: 2,
-        title: "TOYO",
-        season: "winter",
-        width: "185",
-        hight: "65",
-        diameter: "16",
-        price: 5000,
-        mainPhoto:
-            "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-        discription:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-    },
-    {
-        id: 3,
-        title: "TOYO",
-        season: "winter",
-        width: "195",
-        hight: "45",
-        diameter: "17",
-        price: 5000,
-        mainPhoto:
-            "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-        discription:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-    },
-    {
-        id: 4,
-        title: "TOYO",
-        season: "summer",
-        width: "195",
-        hight: "35",
-        diameter: "18",
-        price: 5000,
-        mainPhoto:
-            "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-        discription:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-    },
-    {
-        id: 5,
-        title: "TOYO",
-        season: "summer",
-        width: "185",
-        hight: "45",
-        diameter: "19",
-        price: 5000,
-        mainPhoto:
-            "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-        discription:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-    },
-];
-
-function ProductList(props) {
-    const { tg } = useTelegram();
+const ProductList = (props) => {
     const [addedItems, setAddedItems] = useState([]);
-
     const [season, setSeason] = useState("");
     const [width, setWith] = useState("");
     const [hight, setHight] = useState("");
     const [diameter, setDiameter] = useState("");
 
+    const { tg } = useTelegram();
+    const dispatch = useDispatch();
+
+    const tireItems = useSelector((state) => state.tireList.tireItems);
+    console.log();
+
     const onChangeSeason = (e) => {
+        let season = e.target.value
         setSeason(e.target.value);
+        console.log();
+        dispatch(seasonFilter({season}));
     };
 
     const onChangeWidth = (e) => {
+        let width = e.target.value
         setWith(e.target.value);
+        dispatch(widthFilter({width}));
     };
 
     const onChangeHight = (e) => {
@@ -125,36 +72,9 @@ function ProductList(props) {
         }
     };
 
-    const TireItems = tires
-        .filter(function (item) {
-            if (season === "") {
-                return true;
-            } else {
-                return item.season === season;
-            }
-        })
-        .filter(function (item) {
-            if (width === "") {
-                return true;
-            } else {
-                return item.width === width;
-            }
-        })
-        .filter(function (item) {
-            if (hight === "") {
-                return true;
-            } else {
-                return item.hight === hight;
-            }
-        })
-        .filter(function (item) {
-            if (diameter === "") {
-                return true;
-            } else {
-                return item.diameter === diameter;
-            }
-        })
-        .map((item) => <ProductItem item={item} onAdd={onAdd} />);
+    const tires = tireItems.map((item) => (
+        <ProductItem key={item.id} item={item} onAdd={onAdd} />
+    ));
 
     return (
         <div className="productListWrapper">
@@ -174,6 +94,11 @@ function ProductList(props) {
                     className={"select"}
                 >
                     <option value={""}>Ширина</option>
+                    <option value={"150"}>150</option>
+                    <option value={"155"}>155</option>
+                    <option value={"160"}>160</option>
+                    <option value={"165"}>165</option>
+                    <option value={"170"}>170</option>
                     <option value={"175"}>175</option>
                     <option value={"180"}>180</option>
                     <option value={"185"}>185</option>
@@ -209,9 +134,9 @@ function ProductList(props) {
                     <option value={"20"}>20</option>
                 </select>
             </div>
-            <div className="productList">{TireItems}</div>
+            <div className="productList">{tires}</div>
         </div>
     );
-}
+};
 
 export default ProductList;

@@ -12,7 +12,9 @@ function ProductItem(props) {
             <h3 className="title">
                 {props.item.title} id:{props.item.id}
             </h3>
-            <div className="season">Сезон: {props.item.season}</div>
+            <div className="season">
+                Сезон: {props.item.season === "summer" ? "Лето" : "Зима"}
+            </div>
             <div className="size">
                 Размер: {props.item.width}/{props.item.hight}/r
                 {props.item.diameter}

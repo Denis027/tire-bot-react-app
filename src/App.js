@@ -16,7 +16,15 @@ const App = (props) => {
         <div className="App">
             <h1>work</h1>
             <Routes>
-                <Route index path={"/*"} element={<ProductList />} />
+                <Route
+                    index
+                    path={"/*"}
+                    element={
+                        <ProductList
+                        // tires={props.tires}
+                        />
+                    }
+                />
                 <Route path={"form"} element={<Form />} />
             </Routes>
         </div>
