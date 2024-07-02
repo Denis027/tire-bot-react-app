@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { tires } from "./store/store";
 import { setupStore } from "./app/store";
 import { Provider } from "react-redux";
 
@@ -13,7 +12,7 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Provider store={store}>
-                <App tires={tires} />
+                <App />
             </Provider>
         </BrowserRouter>
     </React.StrictMode>
