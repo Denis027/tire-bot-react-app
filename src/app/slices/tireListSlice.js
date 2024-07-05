@@ -1,208 +1,219 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { tiresAPI } from "../../api/tiresAPI";
+
+export const fetchTires = createAsyncThunk("tireList/fetchTires", async () => {
+    const response = await tiresAPI.getTires().then((data) => {
+        getTires(data);
+        console.log(response);
+    });
+});
 
 export const tireListSlice = createSlice({
     name: "tireList",
     initialState: {
         isLoading: false,
         tireItems: [
-            {
-                id: 1,
-                title: "TOYO",
-                season: "winter",
-                width: "175",
-                hight: "65",
-                diameter: "15",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 2,
-                title: "TOYO",
-                season: "winter",
-                width: "185",
-                hight: "65",
-                diameter: "16",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 3,
-                title: "TOYO",
-                season: "winter",
-                width: "195",
-                hight: "45",
-                diameter: "17",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 4,
-                title: "TOYO",
-                season: "summer",
-                width: "200",
-                hight: 40,
-                diameter: "18",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 5,
-                title: "TOYO",
-                season: "summer",
-                width: "185",
-                hight: "55",
-                diameter: "19",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 6,
-                title: "TOYO",
-                season: "winter",
-                width: "205",
-                hight: "45",
-                diameter: "18",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 7,
-                title: "TOYO",
-                season: "winter",
-                width: "155",
-                hight: "55",
-                diameter: "16",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 8,
-                title: "TOYO",
-                season: "winter",
-                width: "195",
-                hight: "45",
-                diameter: "19",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 9,
-                title: "TOYO",
-                season: "summer",
-                width: "175",
-                hight: "55",
-                diameter: "18",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 10,
-                title: "TOYO",
-                season: "summer",
-                width: "185",
-                hight: "45",
-                diameter: "19",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 11,
-                title: "TOYO",
-                season: "winter",
-                width: "175",
-                hight: "65",
-                diameter: "15",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 12,
-                title: "TOYO",
-                season: "winter",
-                width: "185",
-                hight: "65",
-                diameter: "16",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 13,
-                title: "TOYO",
-                season: "winter",
-                width: "195",
-                hight: "45",
-                diameter: "18",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 14,
-                title: "TOYO",
-                season: "summer",
-                width: "160",
-                hight: "45",
-                diameter: "18",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
-            {
-                id: 15,
-                title: "TOYO",
-                season: "summer",
-                width: "165",
-                hight: "55",
-                diameter: "19",
-                price: 5000,
-                mainPhoto:
-                    "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
-                discription:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
-            },
+            // {
+            //     id: 1,
+            //     title: "TOYO",
+            //     season: "winter",
+            //     width: "175",
+            //     hight: "65",
+            //     diameter: "15",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 2,
+            //     title: "TOYO",
+            //     season: "winter",
+            //     width: "185",
+            //     hight: "65",
+            //     diameter: "16",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 3,
+            //     title: "TOYO",
+            //     season: "winter",
+            //     width: "195",
+            //     hight: "45",
+            //     diameter: "17",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 4,
+            //     title: "TOYO",
+            //     season: "summer",
+            //     width: "200",
+            //     hight: 40,
+            //     diameter: "18",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 5,
+            //     title: "TOYO",
+            //     season: "summer",
+            //     width: "185",
+            //     hight: "55",
+            //     diameter: "19",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 6,
+            //     title: "TOYO",
+            //     season: "winter",
+            //     width: "205",
+            //     hight: "45",
+            //     diameter: "18",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 7,
+            //     title: "TOYO",
+            //     season: "winter",
+            //     width: "155",
+            //     hight: "55",
+            //     diameter: "16",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 8,
+            //     title: "TOYO",
+            //     season: "winter",
+            //     width: "195",
+            //     hight: "45",
+            //     diameter: "19",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 9,
+            //     title: "TOYO",
+            //     season: "summer",
+            //     width: "175",
+            //     hight: "55",
+            //     diameter: "18",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 10,
+            //     title: "TOYO",
+            //     season: "summer",
+            //     width: "185",
+            //     hight: "45",
+            //     diameter: "19",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 11,
+            //     title: "TOYO",
+            //     season: "winter",
+            //     width: "175",
+            //     hight: "65",
+            //     diameter: "15",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 12,
+            //     title: "TOYO",
+            //     season: "winter",
+            //     width: "185",
+            //     hight: "65",
+            //     diameter: "16",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 13,
+            //     title: "TOYO",
+            //     season: "winter",
+            //     width: "195",
+            //     hight: "45",
+            //     diameter: "18",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 14,
+            //     title: "TOYO",
+            //     season: "summer",
+            //     width: "160",
+            //     hight: "45",
+            //     diameter: "18",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
+            // {
+            //     id: 15,
+            //     title: "TOYO",
+            //     season: "summer",
+            //     width: "165",
+            //     hight: "55",
+            //     diameter: "19",
+            //     price: 5000,
+            //     mainPhoto:
+            //         "https://st20.stpulscen.ru/images/product/314/714/445_medium3.jpg",
+            //     discription:
+            //         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus deleniti molestiae id distinctio sint aspernatur reiciendis odit eligendi ipsa explicabo? Perspiciatis nisi sed eligendi recusandae neque pariatur, molestiae quae quod.",
+            // },
         ],
     },
     reducers: {
+        getTires: (state, action) => {
+            state.tireItems = action.payload;
+        },
         seasonFilter: (state, action) => {
             state.tireItems = state.tireItems.filter((item) => {
                 if (action.payload.season === "") {
@@ -222,7 +233,7 @@ export const tireListSlice = createSlice({
                 }
             });
             console.log(nextState.tireItems);
-            return nextState
+            return nextState;
         },
         hightFilter: (state, action) => {
             state.tireItems = state.tireItems.filter((item) => {
@@ -246,7 +257,12 @@ export const tireListSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { seasonFilter, widthFilter, hightFilter, diameterFilter } =
-    tireListSlice.actions;
+export const {
+    getTires,
+    seasonFilter,
+    widthFilter,
+    hightFilter,
+    diameterFilter,
+} = tireListSlice.actions;
 
 export default tireListSlice.reducer;

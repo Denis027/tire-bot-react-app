@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductItem from "../ProductItem/ProductItem";
 import "./ProductList.modul.css";
 import { useTelegram } from "../hooks/useTelegram";
 import { useDispatch, useSelector } from "react-redux";
 import {
+    fetchTires,
     seasonFilter,
     widthFilter,
     // hightFilter,
     // diameterFilter,
 } from "../../app/slices/tireListSlice";
+import { tiresAPI } from "../../api/tiresAPI";
 
 const ProductList = (props) => {
     const [addedItems, setAddedItems] = useState([]);
@@ -16,24 +18,31 @@ const ProductList = (props) => {
     const [width, setWith] = useState("");
     const [hight, setHight] = useState("");
     const [diameter, setDiameter] = useState("");
+    // const [allTires, setTires] = useState("");
 
     const { tg } = useTelegram();
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        fetchTires();
+        const response = tiresAPI.getTires();
+        console.log(response);
+        // setTires(response);
+    }, []);
+
     const tireItems = useSelector((state) => state.tireList.tireItems);
-    console.log();
 
     const onChangeSeason = (e) => {
-        let season = e.target.value
+        let season = e.target.value;
         setSeason(e.target.value);
         console.log();
-        dispatch(seasonFilter({season}));
+        dispatch(seasonFilter({ season }));
     };
 
     const onChangeWidth = (e) => {
-        let width = e.target.value
+        let width = e.target.value;
         setWith(e.target.value);
-        dispatch(widthFilter({width}));
+        dispatch(widthFilter({ width }));
     };
 
     const onChangeHight = (e) => {
