@@ -10,7 +10,6 @@ import {
     // hightFilter,
     // diameterFilter,
 } from "../../app/slices/tireListSlice";
-import { tiresAPI } from "../../api/tiresAPI";
 
 const ProductList = (props) => {
     const [addedItems, setAddedItems] = useState([]);
@@ -18,16 +17,13 @@ const ProductList = (props) => {
     const [width, setWith] = useState("");
     const [hight, setHight] = useState("");
     const [diameter, setDiameter] = useState("");
-    // const [allTires, setTires] = useState("");
 
     const { tg } = useTelegram();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchTires();
-        const response = tiresAPI.getTires();
-        console.log(response);
-        // setTires(response);
+        dispatch(fetchTires());
+        // eslint-disable-next-line
     }, []);
 
     const tireItems = useSelector((state) => state.tireList.tireItems);
