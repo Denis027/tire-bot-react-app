@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     fetchTires,
     seasonFilter,
+    selectTireItems,
     widthFilter,
     // hightFilter,
     // diameterFilter,
@@ -26,7 +27,7 @@ const ProductList = (props) => {
         // eslint-disable-next-line
     }, []);
 
-    const tireItems = useSelector((state) => state.tireList.tireItems);
+    const tireItems = useSelector(selectTireItems);
 
     const onChangeSeason = (e) => {
         let season = e.target.value;

@@ -1,21 +1,52 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// eslint-disable-next-line
-// import { tiresAPI } from "../../api/tiresAPI";
-// eslint-disable-next-line
+import {
+    buildCreateSlice,
+    asyncThunkCreator,
+} from "@reduxjs/toolkit";
 import { testAPI } from "../../api/testAPI";
 
-export const tireListSlice = createSlice({
+const createSliceWithThunks = buildCreateSlice({
+    creators: { asyncThunk: asyncThunkCreator },
+});
+
+export const tireListSlice = createSliceWithThunks({
     name: "tireList",
     initialState: {
-        isLoading: null,
+        status: null,
         error: null,
         tireItems: [],
     },
-    reducers: {
-        setTires: (state, action) => {
-            state.tireItems = action.payload;
-        },
-        seasonFilter: (state, action) => {
+    selectors: {
+        selectTireList: (state) => state,
+        selectTireItems: (state) => state.tireItems,
+    },
+
+    reducers: (create) => ({
+        fetchTires: create.asyncThunk(
+            async () => {
+                try {
+                    const response = await testAPI.getTest();
+                    return response;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            {
+                pending: (state) => {
+                    state.status = "Loading";
+                    state.error = null;
+                },
+                fulfilled: (state, action) => {
+                    state.status = "Resolved";
+                    state.tireItems = action.payload;
+                },
+                rejected: (state) => {
+                    state.status = "error";
+                    state.error = "error";
+                },
+            }
+        ),
+
+        seasonFilter: create.reducer((state, action) => {
             state.tireItems = state.tireItems.filter((item) => {
                 if (action.payload.season === "") {
                     return true;
@@ -23,8 +54,8 @@ export const tireListSlice = createSlice({
                     return item.season === action.payload.season;
                 }
             });
-        },
-        widthFilter: (state, action) => {
+        }),
+        widthFilter: create.reducer((state, action) => {
             const nextState = { ...state };
             nextState.tireItems = nextState.tireItems.filter((item) => {
                 if (action.payload.width === "") {
@@ -35,8 +66,8 @@ export const tireListSlice = createSlice({
             });
             console.log(nextState.tireItems);
             return nextState;
-        },
-        hightFilter: (state, action) => {
+        }),
+        hightFilter: create.reducer((state, action) => {
             state.tireItems = state.tireItems.filter((item) => {
                 if (action.payload.season === "") {
                     return true;
@@ -44,8 +75,8 @@ export const tireListSlice = createSlice({
                     return item.season === action.payload.season;
                 }
             });
-        },
-        diameterFilter: (state, action) => {
+        }),
+        diameterFilter: create.reducer((state, action) => {
             state.tireItems = state.tireItems.filter((item) => {
                 if (action.payload.season === "") {
                     return true;
@@ -53,32 +84,8 @@ export const tireListSlice = createSlice({
                     return item.season === action.payload.season;
                 }
             });
-        },
-    },
-    extraReducers: async (builder) => {
-        builder
-            .addCase(fetchTires.pending, (state) => {
-                state.isLoading = "Loading";
-                state.error = null;
-            })
-            .addCase(fetchTires.fulfilled, (state, action) => {
-                state.isLoading = "Resolved";
-                state.tireItems = action.payload;
-            })
-            .addCase(fetchTires.rejected, (state) => {
-                state.isLoading = "error";
-                state.error = "error";
-            });
-    },
-});
-
-export const fetchTires = createAsyncThunk("tireList/fetchTires", async () => {
-    try {
-        const response = await testAPI.getTest();
-        return response;
-    } catch (error) {
-        console.log(error);
-    }
+        }),
+    }),
 });
 
 export const {
@@ -87,6 +94,9 @@ export const {
     widthFilter,
     hightFilter,
     diameterFilter,
+    fetchTires,
 } = tireListSlice.actions;
+
+export const { selectTireItems, selectTireList } = tireListSlice.selectors;
 
 export default tireListSlice.reducer;
